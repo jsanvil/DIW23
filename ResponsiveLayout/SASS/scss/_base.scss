@@ -1,0 +1,16 @@
+@use 'color';
+
+$breakpoint-lg: 1280px;
+$breakpoint-md: 960px;
+$breakpoint-sm: 700px;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*::selection {
+    background-color: color.$selection-background;
+    color: color.$selection-text;
+}

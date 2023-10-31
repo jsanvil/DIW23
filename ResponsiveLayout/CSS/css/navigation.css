@@ -1,0 +1,64 @@
+.nav {
+    background-color: #a6a;
+    grid-column: 1/span 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav li {
+    display: block;
+    list-style: none;
+    box-sizing: content-box;
+}
+
+.nav li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 1em;
+    transition: background-color 0.2s ease-out;
+}
+
+.nav li a:hover {
+    background-color: lightcoral;
+}
+
+.menubtn {
+    cursor: pointer;
+    display: none;
+}
+
+#hmenu {
+    display: none;
+}
+
+@media screen and (max-width: 960px) {
+    .nav li {
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .nav {
+        display: none;
+        transition: left 0.3s ease-in-out;
+    }
+
+    .nav ul {
+        width: 100%;
+    }
+
+    .nav ul li {
+        display: block;
+    }
+
+    .menubtn {
+        display: block;
+    }
+
+    .container:has(.header #hmenu:checked) .nav {
+        display: flex;
+        flex-direction: row;
+    }
+}
