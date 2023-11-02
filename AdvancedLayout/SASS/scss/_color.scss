@@ -1,0 +1,42 @@
+@use 'sass:color';
+
+$accent: #39e;
+
+// $inverse: adjust-hue($accent, 180deg);
+// $inverse: #7a7;
+// $inverse: complement($accent);
+// $inverse: invert($accent);
+
+// $inverse: desaturate($accent, 10);
+// $inverse: saturate($accent, 10);
+
+// $inverse: lighten($accent, 10);
+//$inverse: darken($accent, 10);
+
+// $inverse: fade-out($accent, 0.5);
+//$inverse: fade-in($accent, 0.5);
+
+// $inverse: #579;
+$inverse: desaturate($accent, 60);
+
+$accent-light: lighten($accent, 30%);
+$accent-dark: lighten($accent, 10%);
+
+$inverse-light: lighten($inverse, 30%);
+$inverse-dark: lighten($inverse, 10%);
+
+$text: #333;
+$light-text: #fff;
+
+$background: #fff;
+
+$selection-background: $accent;
+$selection-text: white;
+
+$button-hover: lighten($accent, 5%);
+$button-active: $accent;
+
+$nav: $accent-light;
+$nav-hover: $inverse-dark;
+$nav-active: $inverse;
+

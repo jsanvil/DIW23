@@ -1,0 +1,95 @@
+@use 'color';
+@use 'base';
+@use 'sass:selector';
+
+.nav {
+    background-color: color.$nav;
+    grid-column: 1/span 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    li {
+        display: block;
+        list-style: none;
+
+        a {
+            display: block;
+            color: color.$text;
+            text-decoration: none;
+            padding: 1em;
+            transition: background-color 0.2s ease-out;
+
+            &:hover {
+                background-color: color.$nav-hover;
+            }
+
+            &:active {
+                background-color: color.$nav-active;
+            }
+        }
+    }
+}
+
+#nav-icon {
+    cursor: pointer;
+    display: none;
+}
+
+#nav-icon {
+    padding: 0.5em 0.7em;
+
+    &:hover {
+        background-color: color.$button-hover;
+    }
+
+    &:active {
+        background-color: color.$button-active;
+    }
+}
+
+#nav-switch:checked ~ * #nav-icon {
+    background-color: #333;
+    color: white;
+}
+
+#nav-switch {
+    display: none;
+}
+
+@media screen and (max-width: base.$breakpoint-md) {
+    .nav li {
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: base.$breakpoint-sm) {
+    .nav {
+        transition: all 0.2s ease-in-out;
+        flex-shrink: 1;
+        overflow: hidden;
+
+        ul {
+            width: 100%;
+
+            li {
+                display: block;
+            }
+        }
+    }
+
+    #nav-icon {
+        display: block;
+    }
+
+    #nav-switch:checked ~ .nav {
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: row;
+        flex-shrink: 0;
+        focus-within {
+            display: none;
+        }
+    }
+}

@@ -7,22 +7,22 @@
 }
 
 *::selection {
-  background-color: #a6a;
+  background-color: #39e;
   color: white;
 }
 
 .card {
-  background-color: white;
+  background-color: #fff;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 3px 1px 0 #a6a;
-  border: 1px solid #a6a;
+  box-shadow: 0 3px 1px 0 #95acbf;
+  border: 1px solid #95acbf;
 }
-.card .header {
-  background: #a6a;
+.card > .header {
+  background: #95acbf;
   padding: 0.3em 0.5em;
 }
-.card .header p {
+.card > .header p {
   padding: 0;
   margin: 0;
   color: #fff;
@@ -34,8 +34,19 @@
   font-size: 0.8em;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*::selection {
+  background-color: #39e;
+  color: white;
+}
+
 .nav {
-  background-color: #a6a;
+  background-color: #c0e0fa;
   grid-column: 1/span 3;
   display: flex;
   flex-direction: column;
@@ -44,25 +55,42 @@
 .nav li {
   display: block;
   list-style: none;
-  box-sizing: content-box;
 }
 .nav li a {
   display: block;
-  color: #fff;
+  color: #333;
   text-decoration: none;
   padding: 1em;
   transition: background-color 0.2s ease-out;
 }
 .nav li a:hover {
-  background-color: #b376b3;
+  background-color: #95acbf;
+}
+.nav li a:active {
+  background-color: #7593ac;
 }
 
-.menubtn {
+#nav-icon {
   cursor: pointer;
   display: none;
 }
 
-#hmenu {
+#nav-icon {
+  padding: 0.5em 0.7em;
+}
+#nav-icon:hover {
+  background-color: #4ba5f0;
+}
+#nav-icon:active {
+  background-color: #39e;
+}
+
+#nav-switch:checked ~ * #nav-icon {
+  background-color: #333;
+  color: white;
+}
+
+#nav-switch {
   display: none;
 }
 
@@ -73,8 +101,9 @@
 }
 @media screen and (max-width: 700px) {
   .nav {
-    height: 0;
-    transition: all 0.3s cubic-bezier(0.47, 1.64, 0.51, 0.85);
+    transition: all 0.2s ease-in-out;
+    flex-shrink: 1;
+    overflow: hidden;
   }
   .nav ul {
     width: 100%;
@@ -82,23 +111,25 @@
   .nav ul li {
     display: block;
   }
-  .menubtn {
+  #nav-icon {
     display: block;
   }
-  .container:has(.header #hmenu:checked) .nav {
+  #nav-switch:checked ~ .nav {
+    left: 0;
+    right: 0;
     display: flex;
     flex-direction: row;
-    height: 500px;
-    overflow: visible;
+    flex-shrink: 0;
+  }
+  #nav-switch:checked ~ .nav focus-within {
+    display: none;
   }
 }
 body {
   height: 100vh;
   font-size: 1.2em;
-  transition: all 0.3s ease-in-out;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: white;
-  color: #333;
+  background-color: #fff;
 }
 
 /* ----- Layout ----- */
@@ -110,56 +141,30 @@ body {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: min-content auto min-content;
 }
-
-.main,
-.footer {
-  border: 1px dashed #e62be6;
-  padding: 1em;
-}
-
-.header {
-  background-color: #e1c8e1;
+.container > .header {
+  background-color: #62b1f2;
+  color: #fff;
   grid-column: 1/span 12;
   display: flex;
   gap: 1em;
   align-items: center;
   font-size: 1.5em;
 }
-
-.header .title {
+.container > .header .title {
   padding: 0.5em;
 }
-
-.header .logo {
-  color: #333;
-}
-
-.menubtn {
-  padding: 0.5em 0.7em;
-}
-
-.menubtn:hover {
-  background-color: #b376b3;
-}
-
-.menubtn:active {
-  background-color: #a6a;
-}
-
-#hmenu:checked ~ .menubtn {
-  background-color: #a6a;
-  color: white;
-}
-
-.main {
-  background-color: 111;
+.container > .main {
+  background-color: #fff;
   grid-column: 4/span 12;
 }
-
-.footer {
-  background-color: #a6a;
+.container > .footer {
+  background-color: #62b1f2;
+  color: #fff;
   grid-column: 1/span 12;
   grid-row: 3;
+}
+.container > .main, .container > .footer {
+  padding: 1em;
 }
 
 /* ----- Helper classes ----- */

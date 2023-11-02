@@ -1,0 +1,13 @@
+{
+  "editor.tabSize": 2,
+  "html.format.wrapAttributes": "force-aligned",
+  "scss.lint.duplicateProperties": "warning",
+  "scss.lint.float": "warning",
+  "css.format.spaceAroundSelectorSeparator": true,
+  "css.lint.duplicateProperties": "warning",
+  "css.lint.float": "warning",
+  "css.lint.zeroUnits": "warning",
+  "cSpell.enableFiletypes": [
+    "!css"
+  ],
+}

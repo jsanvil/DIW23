@@ -9,7 +9,6 @@
 .nav li {
     display: block;
     list-style: none;
-    box-sizing: content-box;
 }
 
 .nav li a {
@@ -20,16 +19,30 @@
     transition: background-color 0.2s ease-out;
 }
 
-.nav li a:hover {
+nav li a:hover {
     background-color: lightcoral;
 }
 
-.menubtn {
+#nav-icon {
+    padding: 0.5em 0.7em;
     cursor: pointer;
     display: none;
 }
 
-#hmenu {
+#nav-icon:hover {
+    background-color: var(--color-button-hover);
+}
+
+#nav-icon:active {
+    background-color: var(--color-button-active);
+}
+
+#nav-switch:checked #nav-icon {
+    background-color: var(--color-button-active);
+    color: white;
+}
+
+#nav-switch {
     display: none;
 }
 
@@ -41,8 +54,9 @@
 
 @media screen and (max-width: 700px) {
     .nav {
-        display: none;
-        transition: left 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        flex-shrink: 1;
+        overflow: hidden;
     }
 
     .nav ul {
@@ -53,12 +67,13 @@
         display: block;
     }
 
-    .menubtn {
+    #nav-icon {
         display: block;
     }
 
-    .container:has(.header #hmenu:checked) .nav {
+    #nav-switch:checked ~ .nav {
         display: flex;
         flex-direction: row;
+        flex-shrink: 0;
     }
 }

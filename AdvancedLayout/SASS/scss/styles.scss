@@ -7,10 +7,9 @@
 body {
   height: 100vh;
   font-size: 1.2em;
-  transition: all 0.3s ease-in-out;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: fonts.$default-font;
   background-color: color.$background;
-  color: color.$text;
+
 }
 
 /* ----- Layout ----- */
@@ -22,57 +21,37 @@ body {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: min-content auto min-content;
-}
 
-.main,
-.footer {
-  border: 1px dashed color.$border;
-  padding: 1em;
-}
+  & > .header {
+    background-color: color.$accent-dark;
+    color: color.$light-text;
+    grid-column: 1/span 12;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    font-size: 1.5em;
 
-.header {
-  background-color: color.$primary;
-  grid-column: 1/span 12;
-  display: flex;
-  gap: 1em;
-  align-items: center;
-  font-size: 1.5em;
-}
+    .title {
+      padding: 0.5em;
+    }
+  }
 
-.header .title {
-  padding: 0.5em;
-}
+  & > .main {
+    background-color: color.$background;
+    grid-column: 4/span 12;
+  }
 
-.header .logo {
-  color: color.$text;
-}
+  & > .footer {
+    background-color: color.$accent-dark;
+    color: color.$light-text;
+    grid-column: 1/span 12;
+    grid-row: 3;
+  }
 
-.menubtn {
-  padding: 0.5em 0.7em;
-}
-
-.menubtn:hover {
-  background-color: color.$button-hover;
-}
-
-.menubtn:active {
-  background-color: color.$button-active;
-}
-
-#hmenu:checked~.menubtn {
-  background-color: color.$button-active;
-  color: white;
-}
-
-.main {
-  background-color: color.$secondary;
-  grid-column: 4/span 12;
-}
-
-.footer {
-  background-color: color.$tertiary;
-  grid-column: 1/span 12;
-  grid-row: 3;
+  & > .main,
+  & > .footer {
+    padding: 1em;
+  }
 }
 
 /* ----- Helper classes ----- */
@@ -115,7 +94,7 @@ body {
   justify-items: center;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: base.$breakpoint-md) {
   .container {
     display: flex;
     flex-direction: column;
@@ -130,7 +109,7 @@ body {
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: base.$breakpoint-sm) {
   .cols-3 {
     grid-template-columns: 1fr;
   }
