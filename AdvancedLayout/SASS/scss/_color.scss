@@ -1,6 +1,14 @@
 @use 'sass:color';
 
 $accent: #39e;
+$inverse: #579;
+
+$dark: false !default;
+
+@if $dark {
+    $accent: darken($accent, 50%);
+    $inverse: darken($inverse, 50%);
+}
 
 // $inverse: adjust-hue($accent, 180deg);
 // $inverse: #7a7;
@@ -16,7 +24,6 @@ $accent: #39e;
 // $inverse: fade-out($accent, 0.5);
 //$inverse: fade-in($accent, 0.5);
 
-// $inverse: #579;
 $inverse: desaturate($accent, 60);
 
 $accent-light: lighten($accent, 30%);
@@ -40,3 +47,22 @@ $nav: $accent-light;
 $nav-hover: $inverse-dark;
 $nav-active: $inverse;
 
+$card: lighten($accent-light, 10);
+
+@if $dark {
+    $background: #333;
+    $text: #fff;
+    $light-text: #fff;
+
+    $selection-background: $inverse;
+    $selection-text: $accent;
+
+    $button-hover: darken($inverse, 5%);
+    $button-active: $inverse;
+
+    $nav: $inverse-light;
+    $nav-hover: $accent-dark;
+    $nav-active: $accent;
+
+    $card: darken($inverse-light, 10);
+}

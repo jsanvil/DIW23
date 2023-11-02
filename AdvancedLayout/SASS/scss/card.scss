@@ -1,7 +1,7 @@
 @use 'color';
 
 .card {
-  background-color: color.$background;
+  background-color: color.$card;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 3px 1px 0 color.$inverse-dark;
