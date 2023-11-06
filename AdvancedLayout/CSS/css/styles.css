@@ -124,6 +124,13 @@ body {
   justify-items: center;
 }
 
+.autogrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1em;
+  transition: 1s;
+}
+
 @media screen and (max-width: 960px) {
   .container {
     display: flex;

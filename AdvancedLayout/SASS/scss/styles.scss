@@ -20,38 +20,96 @@ body {
   max-width: base.$breakpoint-lg;
   min-width: calc(base.$breakpoint-sm / 2);
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "footer footer";
+  grid-template-columns: repeat(min-content 1fr);
   grid-template-rows: min-content auto min-content;
 
-  & > .header {
+  > .header {
+    grid-area: header;
     background-color: color.$accent-dark;
     color: color.$light-text;
-    grid-column: 1/span 12;
     display: flex;
-    gap: 1em;
+    flex-wrap: wrap;
     align-items: center;
     font-size: 1.5em;
+    transition: ease all .5s;
 
     .title {
-      padding: 0.5em;
+      margin: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
     }
   }
 
-  & > .main {
-    background-color: color.$background;
-    grid-column: 4/span 12;
+  .nav {
+    grid-area: nav;
+    background-color: color.$nav;
+
+    li > a {
+      padding: 0.5em 2em 0.5em 1em;
+    }
   }
 
-  & > .footer {
+  .main {
+    grid-area: main;
+    background-color: color.$background;
+    padding: 1em;
+  }
+
+  .footer {
+    padding: 0.5rem;
+    grid-area: footer;
     background-color: color.$accent-dark;
     color: color.$light-text;
-    grid-column: 1/span 12;
-    grid-row: 3;
+  }
+}
+
+.searchbar {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  color: color.$light-text;
+
+  i {
+    color: color.$light-text;
+    position: relative;
+    right: -2em;
+    font-size: 0.8em;
+    pointer-events: none;
+    order: -1;
   }
 
-  & > .main,
-  & > .footer {
-    padding: 1em;
+  input {
+    width: 200px;
+    padding: 0.3em;
+    padding-left: 2.5em;
+    border: none;
+    outline: none;
+    border-radius: 0.5em;
+    font-size: 0.8em;
+    background-color: color.$accent-mid-dark;
+    transition:
+      background-color 0.2s linear,
+      width 0.2s ease-in-out;
+
+    &::placeholder {
+      color: color.$light-text;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      width: 100%;
+      color: color.$text;
+      background-color: color.$background;
+
+      ~ i {
+        color: color.$text;
+      }
+    }
   }
 }
 
@@ -99,6 +157,13 @@ body {
   .container {
     display: flex;
     flex-direction: column;
+
+    .nav {
+
+      li > a {
+        padding: 0.5em;
+      }
+    }
   }
 
   .cols-2 {
@@ -114,4 +179,47 @@ body {
   .cols-3 {
     grid-template-columns: 1fr;
   }
+
+  .container .header {
+
+    flex-wrap: nowrap;
+
+    &:focus-within {
+      #nav-icon,
+      .title {
+        display: none;
+      }
+    }
+  }
+
+  .searchbar {
+    margin: 0.8rem auto;
+    display: flex;
+    align-items: center;
+    color: color.$light-text;
+
+    input {
+      width: 0px;
+      padding: 0.3em;
+      padding-left: 2.5em;
+      transition: none;
+
+      &::placeholder {
+        color: color.$light-text;
+      }
+
+      &:focus,
+      &:not(:placeholder-shown) {
+        width: 100%;
+        color: color.$text;
+        background-color: color.$background;
+        justify-content: flex-start;
+
+        ~ i {
+          color: color.$text;
+        }
+      }
+    }
+  }
+
 }

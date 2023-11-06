@@ -28,6 +28,7 @@ $inverse: desaturate($accent, 60);
 
 $accent-light: lighten($accent, 30%);
 $accent-dark: lighten($accent, 10%);
+$accent-mid-dark: lighten($accent, 15%);
 
 $inverse-light: lighten($inverse, 30%);
 $inverse-dark: lighten($inverse, 10%);
