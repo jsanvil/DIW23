@@ -2,8 +2,8 @@
 @use 'base';
 @use 'color';
 
-@import 'card';
-@import 'navigation';
+@use 'card';
+@use 'navigation';
 
 body {
   height: 100vh;
@@ -74,7 +74,7 @@ body {
   align-items: center;
   color: color.$light-text;
 
-  i {
+  label {
     color: color.$light-text;
     position: relative;
     right: -2em;
@@ -106,7 +106,7 @@ body {
       color: color.$text;
       background-color: color.$background;
 
-      ~ i {
+      ~ label i {
         color: color.$text;
       }
     }

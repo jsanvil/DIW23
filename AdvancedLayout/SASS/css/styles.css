@@ -34,17 +34,6 @@
   font-size: 0.8em;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-*::selection {
-  background-color: #39e;
-  color: white;
-}
-
 .nav {
   display: flex;
   flex-direction: column;
@@ -181,7 +170,7 @@ body {
   align-items: center;
   color: #fff;
 }
-.searchbar i {
+.searchbar label {
   color: #fff;
   position: relative;
   right: -2em;
@@ -208,7 +197,7 @@ body {
   color: #333;
   background-color: #fff;
 }
-.searchbar input:focus ~ i, .searchbar input:not(:placeholder-shown) ~ i {
+.searchbar input:focus ~ label i, .searchbar input:not(:placeholder-shown) ~ label i {
   color: #333;
 }
 
